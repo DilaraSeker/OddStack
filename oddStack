@@ -1,0 +1,106 @@
+import java.util.*;
+
+
+public class oddStack {
+
+	public static void pushStack(Stack st1,Stack st2,int a){
+		int size =0;
+		if((a%2)== 0 ){
+				
+			st1.push(new Integer(a));
+			System.out.println("push(" + a + ")");
+		
+		}
+		int s1 = st1.size();
+		if((a%2)!= 0 ){
+			
+			while(size < s1){
+			  
+				st2.push(st1.pop());
+		      
+				System.out.println("push(" + a + ")");
+		   
+				size++;
+			}
+			
+			st1.push(new Integer(a));
+     
+			while(size!=0){
+			  
+				st1.push(st2.pop());  
+			
+				size--;
+			}
+	}
+	}
+	public static void removeStack(Stack st1,Stack st2,int a){
+		
+		
+		int size =0;
+		
+		if((a%2)== 0 ){
+				
+			st1.remove(new Integer(a));
+			System.out.println("remove(" + a + ")");
+			
+		}
+		int s1 = st1.size();
+		if((a%2)!= 0 ){
+			
+			while(size+1 < s1){
+			    
+				st2.push(st1.pop());
+		        System.out.println("remove(" + a + ")");
+		       
+			size++;
+			}
+			st1.pop();
+     
+			while(size!=0){
+			    
+				st1.push(st2.pop());
+		       
+			size--;
+			
+			}
+	}
+	}
+	public static void main(String args[]) {
+		Stack st1 = new Stack();
+		Stack st2 = new Stack();
+	  
+	
+        Scanner scan=new Scanner(System.in);
+		
+		             			
+        String inputString ="";
+		
+		while(!inputString.equals("exit")){
+		
+			System.out.println("Enter: ");
+			inputString = scan.nextLine();  
+			
+			String [] parameters = inputString.split(" ");
+		String method = parameters[0];
+		int value = Integer.parseInt(parameters[1]);
+		
+		
+		if (method.equals("push")){
+		pushStack(st1,st2,value);
+		
+		System.out.println("stack1: " + st1);
+    
+		}
+		if (method.equals("remove")){
+		removeStack(st1,st2,value);
+		
+		System.out.println("stack1: " + st1);
+      
+		}
+		}
+
+	}
+	
+	
+}
+
